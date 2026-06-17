@@ -263,7 +263,7 @@
             color: var(--text-main);
         }
 
-        /* 4. Preise (aktualisiert) */
+        /* 4. Preise */
         .price-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -551,25 +551,27 @@
                 Hoppla! Es gab ein Problem beim Absenden. Bitte versuchen Sie es erneut.
             </div>
 
-            <form id="nanny-form">
+            <form id="nanny-form" action="https://formspree.io/f/xzdqqrql" method="POST">
+                <input type="hidden" name="_next" value="https://tagesmami.lukasimbusch.ch#contact">
+                
                 <div class="form-group">
                     <label for="name">Ihr vollständiger Name</label>
-                    <input type="text" id="name" name="Name der Eltern" required placeholder="Sabine Müller" data-fs-field>
+                    <input type="text" id="name" name="Name der Eltern" required placeholder="Sabine Müller">
                 </div>
 
                 <div class="form-group">
                     <label for="email">E-Mail-Adresse</label>
-                    <input type="email" id="email" name="email" required placeholder="sabine.mueller@example.de" data-fs-field>
+                    <input type="email" id="email" name="email" required placeholder="sabine.mueller@example.de">
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Telefonnummer</label>
-                    <input type="tel" id="phone" name="Telefonnummer" required placeholder="0170 1234567" data-fs-field>
+                    <input type="tel" id="phone" name="Telefonnummer" required placeholder="0170 1234567">
                 </div>
 
                 <div class="form-group">
                     <label for="care-type">Gewünschtes Betreuungsmodell</label>
-                    <select id="care-type" name="Betreuungsmodell" data-fs-field>
+                    <select id="care-type" name="Betreuungsmodell">
                         <option value="Ganztagesbetreuung">Ganztagesbetreuung</option>
                         <option value="Halbtagesbetreuung">Halbtagesbetreuung</option>
                         <option value="Mittagstisch">Reiner Mittagstisch</option>
@@ -583,10 +585,10 @@
 
                 <div class="form-group">
                     <label for="message">Erzählen Sie mir etwas über Ihre Familie und Wünsche:</label>
-                    <textarea id="message" name="Nachricht der Familie" rows="5" required placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..." data-fs-field></textarea>
+                    <textarea id="message" name="Nachricht der Familie" rows="5" required placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn" data-fs-submit-btn>Bewerbung absenden</button>
+                <button type="submit" class="submit-btn">Bewerbung absenden</button>
             </form>
         </div>
     </section>
@@ -609,22 +611,12 @@
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // Formspree AJAX
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { 
-            formElement: '#nanny-form', 
-            formId: 'xzdqqrql',
-            onSuccess: function() {
-                document.getElementById('nanny-form').style.display = 'none';
-                document.getElementById('form-success').style.display = 'block';
-                document.getElementById('form-error').style.display = 'none';
-            },
-            onError: function() {
-                document.getElementById('form-error').style.display = 'block';
-            }
-        });
+        // Überprüfung, ob der Nutzer gerade das Formular abgesendet hat
+        if (window.location.hash === '#contact' && document.referrer.includes('formspree.io')) {
+            document.getElementById('nanny-form').style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+        }
     </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
