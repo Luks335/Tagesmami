@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagesmami wirbelwind Rütihof AG</title>
+    <style>
+        /* Dark Mode Farbpalette */
+        :root {
+            --primary: #5ec4cd;       /* Helles Cyanblau aus dem Logo */
+            --secondary: #FF85A2;     /* Warmes Rosa */
+            --dark: #121214;          /* Sehr dunkles Anthrazit für den Hintergrund */
+            --card-bg: #1e1e24;       /* Etwas helleres Dunkelgrau für Karten/Formulare */
+            --light: #F9F9FB;         /* Off-White für Highlights */
+            --white: #FFFFFF;
+            --text-main: #e1e1e6;     /* Helle Schriftfarbe für Haupttexte */
+            --text-muted: #a09be7;    /* Sanftes Violett/Blau für Menüpunkte */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation oben zentriert */
+        header {
+            background-color: var(--dark);
+            padding: 20px 20px 0 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .brand-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: #2a2a32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Bereichs-Layouts */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            color: var(--white);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* 1. Startseite (Home) mit Full-Width Slider */
+        #home {
+            padding: 20px 20px 60px 20px;
+            max-width: 1200px;
+        }
+
+        /* Slider-Container mit leicht abgerundeten Ecken */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 55px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-btn.prev { left: 0; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+        .slider-btn.next { right: 0; border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+
+        /* Einleitungstext unter dem Slider */
+        .hero-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+        }
+
+        .hero-intro h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .hero-intro p {
+            font-size: 18px;
+            color: #b0b0b8;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #f26d8c;
+        }
+
+        /* 2. Infos & Über mich */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-top: 4px solid var(--primary);
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .info-card p {
+            color: var(--text-main);
+        }
+
+        /* 3. Arbeitszeiten */
+        .hours-container {
+            background: var(--card-bg);
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #2a2a32;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            font-weight: bold;
+            color: var(--white);
+        }
+
+        .hours-time {
+            color: var(--text-main);
+        }
+
+        /* 4. Preise (aktualisiert) */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-top: 4px solid var(--primary);
+        }
+
+        .price-card h3 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .price-card .sub-title {
+            color: #b0b0b8;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 34px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .price-card.featured {
+            border-top: 4px solid var(--secondary);
+        }
+
+        .price-card.featured .price-amount {
+            color: var(--secondary);
+        }
+
+        /* Verpflegungs-Box */
+        .meal-container {
+            background: var(--card-bg);
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .meal-container h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .meal-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a32;
+        }
+
+        .meal-row:last-child {
+            border-bottom: none;
+        }
+
+        .meal-name {
+            color: var(--text-main);
+        }
+
+        .meal-price {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* 5. Kontakt & Bewerbungsformular */
+        .contact-container {
+            background: var(--card-bg);
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #2a2a32;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #121214;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        ::placeholder {
+            color: #555560;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #49adb5;
+        }
+
+        footer {
+            background-color: #09090b;
+            color: #71717a;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            .slider-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <div class="logo-placeholder">🧸</div>
+            <div class="logo-text">Tagesmami wirbelwind Rütihof AG</div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#info">Informationen</a></li>
+                <li><a href="#hours">BetreuungsZeiten</a></li>
+                <li><a href="#prices">Tarife</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="slider-container">
+            <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="slider" id="slider">
+                <img src="bild1.jpg" alt="Buntstifte" class="slide">
+                <img src="bild2.jpg" alt="Kinderbetreuung" class="slide">
+            </div>
+            <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="hero-intro">
+            <h2>Sie sind auf der Suche nach einem Betreuungsplatz für Ihr Kind?</h2>
+            <p>Dann sind Sie bei mir genau richtig! Ich biete eine verlässliche Ganztages- und Halbtagesbetreuung oder auch einfach nur einen gemütlichen Mittagstisch bei mir zu Hause an.</p>
+            <a href="#contact" class="btn">Kennenlernen vereinbaren</a>
+        </div>
+    </section>
+
+    <section id="info">
+        <h2 class="section-title">Informationen</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>10 Jahre Erfahrung</h3>
+                <p>Seit nunmehr 10 Jahren arbeite ich als Tagesmami mit viel Herzblut, Geduld und Freude an der Entwicklung der Kleinsten. Bei mir ist Ihr Kind in erfahrenen, liebevollen Händen.</p>
+            </div>
+            <div class="info-card">
+                <h3>Natur & Garten</h3>
+                <p>Wir wohnen in einem Haus mit Garten und sind viel draussen an der frischen Luft oder im Wald. Im Garten warten tolle Spielgeräte wie ein Trampolin, ein Sandkasten und ein eigenes Spielhaus, in dem sich die Kinder nach Herzenslust austoben können.</p>
+            </div>
+            <div class="info-card">
+                <h3>Frische, gesunde Küche</h3>
+                <p>Gesunde Ernährung ist wichtig: Es wird täglich von mir frisch gekocht. Im Sommer verwenden wir dafür sogar knackiges, frisches Gemüse direkt aus dem eigenen Garten.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hours">
+        <h2 class="section-title">BetreuungsZeiten</h2>
+        <div class="hours-container">
+            <div class="hours-row">
+                <span class="hours-day">Montag - Donnerstag</span>
+                <span class="hours-time">06:30 - 18:00 Uhr</span>
+            </div>
+            <div class="hours-row">
+                <span class="hours-day">Freitag</span>
+                <span class="hours-time">06:30 - 17:00 Uhr</span>
+            </div>
+            <div class="hours-row">
+                <span class="hours-day">Samstag & Sonntag</span>
+                <span class="hours-time">Geschlossen</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="prices">
+        <h2 class="section-title">Tarife (gelten in CHF)</h2>
+        
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Säugling / Baby</h3>
+                <div class="sub-title">Für die kleinsten Schätze</div>
+                <div class="price-amount">CHF 11.00 <span style="font-size: 16px; font-weight: normal;">/ Std.</span></div>
+                <p style="color: #b0b0b8; font-size: 14px; margin-top: 15px;">Infrastruktur / Administration:<br>CHF 50.00 pro Jahr</p>
+            </div>
+            
+            <div class="price-card featured">
+                <h3>Kleinkinder</h3>
+                <div class="sub-title">Ab 18 Monaten</div>
+                <div class="price-amount">CHF 9.00 <span style="font-size: 16px; font-weight: normal;">/ Std.</span></div>
+                <p style="color: #b0b0b8; font-size: 14px; margin-top: 15px;">Infrastruktur / Administration:<br>CHF 50.00 pro Jahr</p>
+            </div>
+        </div>
+
+        <div class="meal-container">
+            <h3>Dazu berechne ich folgendes:</h3>
+            <div class="meal-row">
+                <span class="meal-name">Frühstück</span>
+                <span class="meal-price">CHF 3.00</span>
+            </div>
+            <div class="meal-row">
+                <span class="meal-name">Znüni</span>
+                <span class="meal-price">CHF 3.00</span>
+            </div>
+            <div class="meal-row">
+                <span class="meal-name">Mittagessen bis Kiga</span>
+                <span class="meal-price">CHF 6.00</span>
+            </div>
+            <div class="meal-row">
+                <span class="meal-name">Mittagessen ab Kiga</span>
+                <span class="meal-price">CHF 8.00</span>
+            </div>
+            <div class="meal-row">
+                <span class="meal-name">Zvieri</span>
+                <span class="meal-price">CHF 3.00</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Kontakt & Bewerbungsformular</h2>
+        <div class="contact-container">
+            
+            <div id="form-success" style="display:none; text-align:center; padding:20px; background:#133329; color:#34d399; border-radius:8px; margin-bottom:20px; font-weight:bold;">
+                Vielen Dank! Ihre Bewerbung wurde erfolgreich abgesendet.
+            </div>
+            <div id="form-error" style="display:none; text-align:center; padding:20px; background:#441a1a; color:#f87171; border-radius:8px; margin-bottom:20px; font-weight:bold;">
+                Hoppla! Es gab ein Problem beim Absenden. Bitte versuchen Sie es erneut.
+            </div>
+
+            <form id="nanny-form">
+                <div class="form-group">
+                    <label for="name">Ihr vollständiger Name</label>
+                    <input type="text" id="name" name="Name der Eltern" required placeholder="Sabine Müller" data-fs-field>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail-Adresse</label>
+                    <input type="email" id="email" name="email" required placeholder="sabine.mueller@example.de" data-fs-field>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefonnummer</label>
+                    <input type="tel" id="phone" name="Telefonnummer" required placeholder="0170 1234567" data-fs-field>
+                </div>
+
+                <div class="form-group">
+                    <label for="care-type">Gewünschtes Betreuungsmodell</label>
+                    <select id="care-type" name="Betreuungsmodell" data-fs-field>
+                        <option value="Ganztagesbetreuung">Ganztagesbetreuung</option>
+                        <option value="Halbtagesbetreuung">Halbtagesbetreuung</option>
+                        <option value="Mittagstisch">Reiner Mittagstisch</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="children">Anzahl & Alter der Kinder</label>
+                    <input type="text" id="children" name="Kinder und Alter" required placeholder="z.B. 2 Kinder (3 und 5 Jahre alt)">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Erzählen Sie mir etwas über Ihre Familie und Wünsche:</label>
+                    <textarea id="message" name="Nachricht der Familie" rows="5" required placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..." data-fs-field></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" data-fs-submit-btn>Bewerbung absenden</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tagesmami wirbelwind Rütihof AG. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+        // Slider Code
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        
+        function moveSlide(direction) {
+            if (direction === 1) {
+                currentSlide = currentSlide === 1 ? 0 : 1;
+            } else {
+                currentSlide = currentSlide === 0 ? 1 : 0;
+            }
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Formspree AJAX
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { 
+            formElement: '#nanny-form', 
+            formId: 'xzdqqrql',
+            onSuccess: function() {
+                document.getElementById('nanny-form').style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('form-error').style.display = 'none';
+            },
+            onError: function() {
+                document.getElementById('form-error').style.display = 'block';
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
