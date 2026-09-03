@@ -343,7 +343,7 @@
             color: var(--primary);
         }
 
-        /* 5. Kontakt & Bewerbungsformular */
+        /* 5. Kontakt & Anfrageformular */
         .contact-container {
             background: var(--card-bg);
             max-width: 700px;
@@ -404,6 +404,11 @@
 
         .submit-btn:hover {
             background-color: #49adb5;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         footer {
@@ -541,19 +546,17 @@
     </section>
 
     <section id="contact">
-        <h2 class="section-title">Kontakt & Bewerbungsformular</h2>
+        <h2 class="section-title">Kontakt & Anfrageformular</h2>
         <div class="contact-container">
             
             <div id="form-success" style="display:none; text-align:center; padding:20px; background:#133329; color:#34d399; border-radius:8px; margin-bottom:20px; font-weight:bold;">
-                Vielen Dank! Ihre Bewerbung wurde erfolgreich abgesendet.
+                Vielen Dank! Ihre Anfrage wurde erfolgreich abgesendet.
             </div>
             <div id="form-error" style="display:none; text-align:center; padding:20px; background:#441a1a; color:#f87171; border-radius:8px; margin-bottom:20px; font-weight:bold;">
                 Hoppla! Es gab ein Problem beim Absenden. Bitte versuchen Sie es erneut.
             </div>
 
             <form id="nanny-form" action="https://formspree.io/f/xzdqqrql" method="POST">
-                <input type="hidden" name="_next" value="https://tagesmami.lukasimbusch.ch#contact">
-                
                 <div class="form-group">
                     <label for="name">Ihr vollständiger Name</label>
                     <input type="text" id="name" name="Name der Eltern" required placeholder="Sabine Müller">
@@ -566,7 +569,7 @@
 
                 <div class="form-group">
                     <label for="phone">Telefonnummer</label>
-                    <input type="tel" id="phone" name="Telefonnummer" required placeholder="0170 1234567">
+                    <input type="tel" id="phone" name="Telefonnummer" required placeholder="012 345 67 89">
                 </div>
 
                 <div class="form-group">
@@ -588,7 +591,7 @@
                     <textarea id="message" name="Nachricht der Familie" rows="5" required placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Bewerbung absenden</button>
+                <button type="submit" class="submit-btn" id="submit-btn">Anfrage absenden</button>
             </form>
         </div>
     </section>
@@ -611,11 +614,46 @@
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // Überprüfung, ob der Nutzer gerade das Formular abgesendet hat
-        if (window.location.hash === '#contact' && document.referrer.includes('formspree.io')) {
-            document.getElementById('nanny-form').style.display = 'none';
-            document.getElementById('form-success').style.display = 'block';
-        }
+        // Formular per AJAX an Formspree senden, ohne Weiterleitung
+        const nannyForm = document.getElementById('nanny-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successBox = document.getElementById('form-success');
+        const errorBox = document.getElementById('form-error');
+
+        nannyForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            successBox.style.display = 'none';
+            errorBox.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Wird gesendet...';
+
+            const formData = new FormData(nannyForm);
+
+            fetch(nannyForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(function (response) {
+                if (response.ok) {
+                    nannyForm.style.display = 'none';
+                    successBox.style.display = 'block';
+                    successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    return response.json().then(function () {
+                        throw new Error('Formspree-Fehler');
+                    });
+                }
+            })
+            .catch(function () {
+                errorBox.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Anfrage absenden';
+            });
+        });
     </script>
 
 </body>
