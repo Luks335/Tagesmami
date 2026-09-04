@@ -1,20 +1,60 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tagesmami wirbelwind Rütihof AG</title>
+
+    <!-- SEO -->
+    <title>Tagesmami Wirbelwind Rütihof | Liebevolle Kinderbetreuung</title>
+
+    <meta name="description" content="Tagesmami Wirbelwind in Rütihof AG: liebevolle und zuverlässige Kinderbetreuung mit Ganztagesbetreuung, Halbtagesbetreuung und Mittagstisch.">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tagesmami-wirbelwind.ch/">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:title" content="Tagesmami Wirbelwind – Kinderbetreuung in Rütihof">
+    <meta property="og:description" content="Liebevolle Kinderbetreuung in Rütihof AG mit Ganztagesbetreuung, Halbtagesbetreuung und Mittagstisch.">
+    <meta property="og:url" content="https://tagesmami-wirbelwind.ch/">
+
+    <!-- Performance -->
+    <meta name="theme-color" content="#121214">
+
+    <!-- Strukturierte Daten für Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ChildCare",
+        "name": "Tagesmami Wirbelwind",
+        "url": "https://tagesmami-wirbelwind.ch/",
+        "description": "Liebevolle und zuverlässige Kinderbetreuung in Rütihof AG mit Ganztagesbetreuung, Halbtagesbetreuung und Mittagstisch.",
+        "areaServed": {
+            "@type": "Place",
+            "name": "Rütihof, Aargau, Schweiz"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Rütihof",
+            "addressRegion": "AG",
+            "addressCountry": "CH"
+        },
+        "priceRange": "CHF 9–11 pro Stunde"
+    }
+    </script>
+
     <style>
         /* Dark Mode Farbpalette */
         :root {
-            --primary: #5ec4cd;       /* Helles Cyanblau aus dem Logo */
-            --secondary: #FF85A2;     /* Warmes Rosa */
-            --dark: #121214;          /* Sehr dunkles Anthrazit für den Hintergrund */
-            --card-bg: #1e1e24;       /* Etwas helleres Dunkelgrau für Karten/Formulare */
-            --light: #F9F9FB;         /* Off-White für Highlights */
+            --primary: #5ec4cd;
+            --secondary: #FF85A2;
+            --dark: #121214;
+            --card-bg: #1e1e24;
+            --light: #F9F9FB;
             --white: #FFFFFF;
-            --text-main: #e1e1e6;     /* Helle Schriftfarbe für Haupttexte */
-            --text-muted: #a09be7;    /* Sanftes Violett/Blau für Menüpunkte */
+            --text-main: #e1e1e6;
+            --text-muted: #a09be7;
         }
 
         * {
@@ -31,7 +71,6 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation oben zentriert */
         header {
             background-color: var(--dark);
             padding: 20px 20px 0 20px;
@@ -90,7 +129,6 @@
             color: var(--primary);
         }
 
-        /* Bereichs-Layouts */
         section {
             padding: 60px 20px;
             max-width: 1200px;
@@ -118,13 +156,11 @@
             border-radius: 2px;
         }
 
-        /* 1. Startseite (Home) mit Full-Width Slider */
         #home {
             padding: 20px 20px 60px 20px;
             max-width: 1200px;
         }
 
-        /* Slider-Container mit leicht abgerundeten Ecken */
         .slider-container {
             position: relative;
             width: 100%;
@@ -169,17 +205,25 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .slider-btn.prev { left: 0; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-        .slider-btn.next { right: 0; border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+        .slider-btn.prev {
+            left: 0;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
 
-        /* Einleitungstext unter dem Slider */
+        .slider-btn.next {
+            right: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
         .hero-intro {
             text-align: center;
             max-width: 800px;
             margin: 40px auto 0 auto;
         }
 
-        .hero-intro h2 {
+        .hero-intro h1 {
             font-size: 32px;
             color: var(--primary);
             margin-bottom: 15px;
@@ -208,7 +252,6 @@
             background-color: #f26d8c;
         }
 
-        /* 2. Infos & Über mich */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -232,7 +275,6 @@
             color: var(--text-main);
         }
 
-        /* 3. Arbeitszeiten */
         .hours-container {
             background: var(--card-bg);
             max-width: 600px;
@@ -263,7 +305,6 @@
             color: var(--text-main);
         }
 
-        /* 4. Preise */
         .price-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -306,7 +347,6 @@
             color: var(--secondary);
         }
 
-        /* Verpflegungs-Box */
         .meal-container {
             background: var(--card-bg);
             max-width: 700px;
@@ -343,7 +383,6 @@
             color: var(--primary);
         }
 
-        /* 5. Kontakt & Anfrageformular */
         .contact-container {
             background: var(--card-bg);
             max-width: 700px;
@@ -365,8 +404,8 @@
             color: var(--white);
         }
 
-        .form-group input, 
-        .form-group select, 
+        .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 12px;
@@ -379,8 +418,8 @@
             transition: border-color 0.3s;
         }
 
-        .form-group input:focus, 
-        .form-group select:focus, 
+        .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
         }
@@ -424,237 +463,538 @@
             .nav-links {
                 gap: 15px;
             }
+
             .slider-container {
                 height: 250px;
+            }
+
+            .hero-intro h1 {
+                font-size: 26px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="brand-container">
-            <div class="logo-placeholder">🧸</div>
-            <div class="logo-text">Tagesmami wirbelwind Rütihof AG</div>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#info">Informationen</a></li>
-                <li><a href="#hours">BetreuungsZeiten</a></li>
-                <li><a href="#prices">Tarife</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="brand-container">
+        <div class="logo-placeholder" aria-hidden="true">🧸</div>
 
-    <section id="home">
-        <div class="slider-container">
-            <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-            <div class="slider" id="slider">
-                <img src="bild1.jpg" alt="Buntstifte" class="slide">
-                <img src="bild2.jpg" alt="Kinderbetreuung" class="slide">
-            </div>
-            <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+        <div class="logo-text">
+            Tagesmami Wirbelwind Rütihof
         </div>
+    </div>
+
+    <nav aria-label="Hauptnavigation">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#info">Informationen</a></li>
+            <li><a href="#hours">Betreuungszeiten</a></li>
+            <li><a href="#prices">Tarife</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+
+    <!-- STARTSEITE -->
+    <section id="home" aria-labelledby="home-title">
+
+        <div class="slider-container">
+
+            <button
+                class="slider-btn prev"
+                onclick="moveSlide(-1)"
+                aria-label="Vorheriges Bild">
+                &#10094;
+            </button>
+
+            <div class="slider" id="slider">
+
+                <img
+                    src="bild1.jpg"
+                    alt="Kinderbetreuung bei Tagesmami Wirbelwind in Rütihof"
+                    class="slide"
+                    loading="eager">
+
+                <img
+                    src="bild2.jpg"
+                    alt="Liebevolle Tagesbetreuung für Kinder in Rütihof"
+                    class="slide"
+                    loading="lazy">
+
+            </div>
+
+            <button
+                class="slider-btn next"
+                onclick="moveSlide(1)"
+                aria-label="Nächstes Bild">
+                &#10095;
+            </button>
+
+        </div>
+
 
         <div class="hero-intro">
-            <h2>Sie sind auf der Suche nach einem Betreuungsplatz für Ihr Kind?</h2>
-            <p>Dann sind Sie bei mir genau richtig! Ich biete eine verlässliche Ganztages- und Halbtagesbetreuung oder auch einfach nur einen gemütlichen Mittagstisch bei mir zu Hause an.</p>
-            <a href="#contact" class="btn">Kennenlernen vereinbaren</a>
+
+            <h1 id="home-title">
+                Tagesmami Wirbelwind – liebevolle Kinderbetreuung in Rütihof
+            </h1>
+
+            <p>
+                Sie sind auf der Suche nach einer liebevollen und zuverlässigen
+                Tagesmutter in Rütihof, Baden oder Umgebung?
+                Dann sind Sie bei mir genau richtig!
+            </p>
+
+            <p>
+                Ich biete eine verlässliche Ganztages- und Halbtagesbetreuung
+                sowie einen gemütlichen Mittagstisch bei mir zu Hause an.
+            </p>
+
+            <a href="#contact" class="btn">
+                Kennenlernen vereinbaren
+            </a>
+
         </div>
+
     </section>
 
-    <section id="info">
-        <h2 class="section-title">Informationen</h2>
+
+    <!-- INFORMATIONEN -->
+    <section id="info" aria-labelledby="info-title">
+
+        <h2 class="section-title" id="info-title">
+            Kinderbetreuung mit Herz in Rütihof
+        </h2>
+
         <div class="info-grid">
-            <div class="info-card">
+
+            <article class="info-card">
+
                 <h3>10 Jahre Erfahrung</h3>
-                <p>Seit nunmehr 10 Jahren arbeite ich als Tagesmami mit viel Herzblut, Geduld und Freude an der Entwicklung der Kleinsten. Bei mir ist Ihr Kind in erfahrenen, liebevollen Händen.</p>
-            </div>
-            <div class="info-card">
+
+                <p>
+                    Seit nunmehr 10 Jahren arbeite ich als Tagesmami mit viel
+                    Herzblut, Geduld und Freude an der Entwicklung der Kleinsten.
+                    Bei mir ist Ihr Kind in erfahrenen und liebevollen Händen.
+                </p>
+
+            </article>
+
+
+            <article class="info-card">
+
                 <h3>Natur & Garten</h3>
-                <p>Wir wohnen in einem Haus mit Garten und sind viel draussen an der frischen Luft oder im Wald. Im Garten warten tolle Spielgeräte wie ein Trampolin, ein Sandkasten und ein eigenes Spielhaus, in dem sich die Kinder nach Herzenslust austoben können.</p>
-            </div>
-            <div class="info-card">
+
+                <p>
+                    Wir wohnen in einem Haus mit Garten und sind viel draussen
+                    an der frischen Luft oder im Wald. Im Garten warten tolle
+                    Spielgeräte wie ein Trampolin, ein Sandkasten und ein
+                    eigenes Spielhaus.
+                </p>
+
+            </article>
+
+
+            <article class="info-card">
+
                 <h3>Frische, gesunde Küche</h3>
-                <p>Gesunde Ernährung ist wichtig: Es wird täglich von mir frisch gekocht. Im Sommer verwenden wir dafür sogar knackiges, frisches Gemüse direkt aus dem eigenen Garten.</p>
-            </div>
+
+                <p>
+                    Gesunde Ernährung ist wichtig: Es wird täglich von mir
+                    frisch gekocht. Im Sommer verwenden wir dafür sogar
+                    knackiges, frisches Gemüse direkt aus dem eigenen Garten.
+                </p>
+
+            </article>
+
         </div>
+
     </section>
 
-    <section id="hours">
-        <h2 class="section-title">BetreuungsZeiten</h2>
+
+    <!-- BETREUUNGSZEITEN -->
+    <section id="hours" aria-labelledby="hours-title">
+
+        <h2 class="section-title" id="hours-title">
+            Betreuungszeiten
+        </h2>
+
         <div class="hours-container">
+
             <div class="hours-row">
-                <span class="hours-day">Montag - Donnerstag</span>
-                <span class="hours-time">06:30 - 18:00 Uhr</span>
+                <span class="hours-day">Montag – Donnerstag</span>
+                <span class="hours-time">06:30 – 18:00 Uhr</span>
             </div>
+
             <div class="hours-row">
                 <span class="hours-day">Freitag</span>
-                <span class="hours-time">06:30 - 17:00 Uhr</span>
+                <span class="hours-time">06:30 – 17:00 Uhr</span>
             </div>
+
             <div class="hours-row">
                 <span class="hours-day">Samstag & Sonntag</span>
                 <span class="hours-time">Geschlossen</span>
             </div>
+
         </div>
+
     </section>
 
-    <section id="prices">
-        <h2 class="section-title">Tarife (gelten in CHF)</h2>
-        
+
+    <!-- PREISE -->
+    <section id="prices" aria-labelledby="prices-title">
+
+        <h2 class="section-title" id="prices-title">
+            Tarife für die Kinderbetreuung
+        </h2>
+
         <div class="price-grid">
-            <div class="price-card">
+
+            <article class="price-card">
+
                 <h3>Säugling / Baby</h3>
-                <div class="sub-title">Für die kleinsten Schätze</div>
-                <div class="price-amount">CHF 11.00 <span style="font-size: 16px; font-weight: normal;">/ Std.</span></div>
-                <p style="color: #b0b0b8; font-size: 14px; margin-top: 15px;">Infrastruktur / Administration:<br>CHF 50.00 pro Jahr</p>
-            </div>
-            
-            <div class="price-card featured">
+
+                <div class="sub-title">
+                    Für die kleinsten Schätze
+                </div>
+
+                <div class="price-amount">
+                    CHF 11.00
+                    <span style="font-size: 16px; font-weight: normal;">
+                        / Std.
+                    </span>
+                </div>
+
+                <p style="color: #b0b0b8; font-size: 14px; margin-top: 15px;">
+                    Infrastruktur / Administration:<br>
+                    CHF 50.00 pro Jahr
+                </p>
+
+            </article>
+
+
+            <article class="price-card featured">
+
                 <h3>Kleinkinder</h3>
-                <div class="sub-title">Ab 18 Monaten</div>
-                <div class="price-amount">CHF 9.00 <span style="font-size: 16px; font-weight: normal;">/ Std.</span></div>
-                <p style="color: #b0b0b8; font-size: 14px; margin-top: 15px;">Infrastruktur / Administration:<br>CHF 50.00 pro Jahr</p>
-            </div>
+
+                <div class="sub-title">
+                    Ab 18 Monaten
+                </div>
+
+                <div class="price-amount">
+                    CHF 9.00
+                    <span style="font-size: 16px; font-weight: normal;">
+                        / Std.
+                    </span>
+                </div>
+
+                <p style="color: #b0b0b8; font-size: 14px; margin-top: 15px;">
+                    Infrastruktur / Administration:<br>
+                    CHF 50.00 pro Jahr
+                </p>
+
+            </article>
+
         </div>
 
+
         <div class="meal-container">
-            <h3>Dazu berechne ich folgendes:</h3>
+
+            <h3>Verpflegung</h3>
+
             <div class="meal-row">
                 <span class="meal-name">Frühstück</span>
                 <span class="meal-price">CHF 3.00</span>
             </div>
+
             <div class="meal-row">
                 <span class="meal-name">Znüni</span>
                 <span class="meal-price">CHF 3.00</span>
             </div>
+
             <div class="meal-row">
                 <span class="meal-name">Mittagessen bis Kiga</span>
                 <span class="meal-price">CHF 6.00</span>
             </div>
+
             <div class="meal-row">
                 <span class="meal-name">Mittagessen ab Kiga</span>
                 <span class="meal-price">CHF 8.00</span>
             </div>
+
             <div class="meal-row">
                 <span class="meal-name">Zvieri</span>
                 <span class="meal-price">CHF 3.00</span>
             </div>
+
         </div>
+
     </section>
 
-    <section id="contact">
-        <h2 class="section-title">Kontakt & Anfrageformular</h2>
+
+    <!-- KONTAKT -->
+    <section id="contact" aria-labelledby="contact-title">
+
+        <h2 class="section-title" id="contact-title">
+            Kontakt zur Tagesmami Wirbelwind
+        </h2>
+
         <div class="contact-container">
-            
-            <div id="form-success" style="display:none; text-align:center; padding:20px; background:#133329; color:#34d399; border-radius:8px; margin-bottom:20px; font-weight:bold;">
+
+            <div
+                id="form-success"
+                style="display:none; text-align:center; padding:20px; background:#133329; color:#34d399; border-radius:8px; margin-bottom:20px; font-weight:bold;">
                 Vielen Dank! Ihre Anfrage wurde erfolgreich abgesendet.
             </div>
-            <div id="form-error" style="display:none; text-align:center; padding:20px; background:#441a1a; color:#f87171; border-radius:8px; margin-bottom:20px; font-weight:bold;">
+
+            <div
+                id="form-error"
+                style="display:none; text-align:center; padding:20px; background:#441a1a; color:#f87171; border-radius:8px; margin-bottom:20px; font-weight:bold;">
                 Hoppla! Es gab ein Problem beim Absenden. Bitte versuchen Sie es erneut.
             </div>
 
-            <form id="nanny-form" action="https://formspree.io/f/xzdqqrql" method="POST">
-                <div class="form-group">
-                    <label for="name">Ihr vollständiger Name</label>
-                    <input type="text" id="name" name="Name der Eltern" required placeholder="Sabine Müller">
-                </div>
+
+            <form
+                id="nanny-form"
+                action="https://formspree.io/f/xzdqqrql"
+                method="POST">
 
                 <div class="form-group">
-                    <label for="email">E-Mail-Adresse</label>
-                    <input type="email" id="email" name="email" required placeholder="sabine.mueller@example.de">
+
+                    <label for="name">
+                        Ihr vollständiger Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="Name der Eltern"
+                        autocomplete="name"
+                        required
+                        placeholder="Sabine Müller">
+
                 </div>
 
-                <div class="form-group">
-                    <label for="phone">Telefonnummer</label>
-                    <input type="tel" id="phone" name="Telefonnummer" required placeholder="012 345 67 89">
-                </div>
 
                 <div class="form-group">
-                    <label for="care-type">Gewünschtes Betreuungsmodell</label>
-                    <select id="care-type" name="Betreuungsmodell">
-                        <option value="Ganztagesbetreuung">Ganztagesbetreuung</option>
-                        <option value="Halbtagesbetreuung">Halbtagesbetreuung</option>
-                        <option value="Mittagstisch">Reiner Mittagstisch</option>
+
+                    <label for="email">
+                        E-Mail-Adresse
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        autocomplete="email"
+                        required
+                        placeholder="sabine.mueller@example.ch">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Telefonnummer
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="Telefonnummer"
+                        autocomplete="tel"
+                        required
+                        placeholder="079 123 45 67">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="care-type">
+                        Gewünschtes Betreuungsmodell
+                    </label>
+
+                    <select
+                        id="care-type"
+                        name="Betreuungsmodell">
+
+                        <option value="Ganztagesbetreuung">
+                            Ganztagesbetreuung
+                        </option>
+
+                        <option value="Halbtagesbetreuung">
+                            Halbtagesbetreuung
+                        </option>
+
+                        <option value="Mittagstisch">
+                            Reiner Mittagstisch
+                        </option>
+
                     </select>
+
                 </div>
+
 
                 <div class="form-group">
-                    <label for="children">Anzahl & Alter der Kinder</label>
-                    <input type="text" id="children" name="Kinder und Alter" required placeholder="z.B. 2 Kinder (3 und 5 Jahre alt)">
+
+                    <label for="children">
+                        Anzahl & Alter der Kinder
+                    </label>
+
+                    <input
+                        type="text"
+                        id="children"
+                        name="Kinder und Alter"
+                        required
+                        placeholder="z.B. 2 Kinder (3 und 5 Jahre alt)">
+
                 </div>
+
 
                 <div class="form-group">
-                    <label for="message">Erzählen Sie mir etwas über Ihre Familie und Wünsche:</label>
-                    <textarea id="message" name="Nachricht der Familie" rows="5" required placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..."></textarea>
+
+                    <label for="message">
+                        Erzählen Sie mir etwas über Ihre Familie und Wünsche
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="Nachricht der Familie"
+                        rows="5"
+                        required
+                        placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..."></textarea>
+
                 </div>
 
-                <button type="submit" class="submit-btn" id="submit-btn">Anfrage absenden</button>
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submit-btn">
+
+                    Anfrage absenden
+
+                </button>
+
             </form>
+
         </div>
+
     </section>
 
-    <footer>
-        <p>&copy; 2026 Tagesmami wirbelwind Rütihof AG. Alle Rechte vorbehalten.</p>
-    </footer>
+</main>
 
-    <script>
-        // Slider Code
-        let currentSlide = 0;
-        const slider = document.getElementById('slider');
-        
-        function moveSlide(direction) {
-            if (direction === 1) {
-                currentSlide = currentSlide === 1 ? 0 : 1;
-            } else {
-                currentSlide = currentSlide === 0 ? 1 : 0;
-            }
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+<footer>
+
+    <p>
+        © 2026 Tagesmami Wirbelwind Rütihof AG.
+        Alle Rechte vorbehalten.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* Slider */
+
+    let currentSlide = 0;
+
+    const slider = document.getElementById('slider');
+
+    function moveSlide(direction) {
+
+        if (direction === 1) {
+            currentSlide = currentSlide === 1 ? 0 : 1;
+        } else {
+            currentSlide = currentSlide === 0 ? 1 : 0;
         }
 
-        // Formular per AJAX an Formspree senden, ohne Weiterleitung
-        const nannyForm = document.getElementById('nanny-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const successBox = document.getElementById('form-success');
-        const errorBox = document.getElementById('form-error');
+        slider.style.transform =
+            `translateX(-${currentSlide * 100}%)`;
 
-        nannyForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+    }
 
-            successBox.style.display = 'none';
-            errorBox.style.display = 'none';
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Wird gesendet...';
 
-            const formData = new FormData(nannyForm);
+    /* Formular */
 
-            fetch(nannyForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(function (response) {
-                if (response.ok) {
-                    nannyForm.style.display = 'none';
-                    successBox.style.display = 'block';
-                    successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    return response.json().then(function () {
-                        throw new Error('Formspree-Fehler');
-                    });
-                }
-            })
-            .catch(function () {
-                errorBox.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Anfrage absenden';
-            });
+    const nannyForm = document.getElementById('nanny-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successBox = document.getElementById('form-success');
+    const errorBox = document.getElementById('form-error');
+
+
+    nannyForm.addEventListener('submit', function(event) {
+
+        event.preventDefault();
+
+        successBox.style.display = 'none';
+        errorBox.style.display = 'none';
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet...';
+
+
+        const formData = new FormData(nannyForm);
+
+
+        fetch(nannyForm.action, {
+
+            method: 'POST',
+
+            body: formData,
+
+            headers: {
+                'Accept': 'application/json'
+            }
+
+        })
+
+        .then(function(response) {
+
+            if (response.ok) {
+
+                nannyForm.style.display = 'none';
+
+                successBox.style.display = 'block';
+
+                successBox.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+            } else {
+
+                return response.json().then(function() {
+                    throw new Error('Formspree-Fehler');
+                });
+
+            }
+
+        })
+
+        .catch(function() {
+
+            errorBox.style.display = 'block';
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent = 'Anfrage absenden';
+
         });
-    </script>
+
+    });
+
+</script>
 
 </body>
 </html>
+```
