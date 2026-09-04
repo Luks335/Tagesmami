@@ -758,130 +758,48 @@
                 Hoppla! Es gab ein Problem beim Absenden. Bitte versuchen Sie es erneut.
             </div>
 
-
             <form
                 id="nanny-form"
-                action="https://formspree.io/f/xzdqqrql"
+                action="https://formsubmit.co/ajax/luzuz.2022@gmail.com"
                 method="POST">
 
                 <div class="form-group">
-
-                    <label for="name">
-                        Ihr vollständiger Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="Name der Eltern"
-                        autocomplete="name"
-                        required
-                        placeholder="Sabine Müller">
-
+                    <label for="name">Ihr vollständiger Name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" required placeholder="Sabine Müller">
                 </div>
 
-
                 <div class="form-group">
-
-                    <label for="email">
-                        E-Mail-Adresse
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        autocomplete="email"
-                        required
-                        placeholder="sabine.mueller@example.ch">
-
+                    <label for="email">E-Mail-Adresse</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required placeholder="sabine.mueller@example.ch">
                 </div>
 
-
                 <div class="form-group">
-
-                    <label for="phone">
-                        Telefonnummer
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="Telefonnummer"
-                        autocomplete="tel"
-                        required
-                        placeholder="079 123 45 67">
-
+                    <label for="phone">Telefonnummer</label>
+                    <input type="tel" id="phone" name="Telefonnummer" autocomplete="tel" required placeholder="079 123 45 67">
                 </div>
 
-
                 <div class="form-group">
-
-                    <label for="care-type">
-                        Gewünschtes Betreuungsmodell
-                    </label>
-
-                    <select
-                        id="care-type"
-                        name="Betreuungsmodell">
-
-                        <option value="Ganztagesbetreuung">
-                            Ganztagesbetreuung
-                        </option>
-
-                        <option value="Halbtagesbetreuung">
-                            Halbtagesbetreuung
-                        </option>
-
-                        <option value="Mittagstisch">
-                            Reiner Mittagstisch
-                        </option>
-
+                    <label for="care-type">Gewünschtes Betreuungsmodell</label>
+                    <select id="care-type" name="Betreuungsmodell">
+                        <option value="Ganztagesbetreuung">Ganztagesbetreuung</option>
+                        <option value="Halbtagesbetreuung">Halbtagesbetreuung</option>
+                        <option value="Mittagstisch">Reiner Mittagstisch</option>
                     </select>
-
                 </div>
-
 
                 <div class="form-group">
-
-                    <label for="children">
-                        Anzahl & Alter der Kinder
-                    </label>
-
-                    <input
-                        type="text"
-                        id="children"
-                        name="Kinder und Alter"
-                        required
-                        placeholder="z.B. 2 Kinder (3 und 5 Jahre alt)">
-
+                    <label for="children">Anzahl & Alter der Kinder</label>
+                    <input type="text" id="children" name="Kinder und Alter" required placeholder="z.B. 2 Kinder (3 und 5 Jahre alt)">
                 </div>
-
 
                 <div class="form-group">
-
-                    <label for="message">
-                        Erzählen Sie mir etwas über Ihre Familie und Wünsche
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="Nachricht der Familie"
-                        rows="5"
-                        required
-                        placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..."></textarea>
-
+                    <label for="message">Erzählen Sie mir etwas über Ihre Familie und Wünsche</label>
+                    <textarea id="message" name="Nachricht der Familie" rows="5" required placeholder="Bitte gewünschtes Startdatum, ungefähre Uhrzeiten oder besondere Bedürfnisse hier eintragen..."></textarea>
                 </div>
 
+                <input type="hidden" name="_cc" value="lukas.zuckschwert100@gmail.com">
 
-                <button
-                    type="submit"
-                    class="submit-btn"
-                    id="submit-btn">
-
-                    Anfrage absenden
-
-                </button>
+                <button type="submit" class="submit-btn" id="submit-btn">Send</button>
 
             </form>
 
@@ -924,16 +842,14 @@
     }
 
 
-    /* Formular */
+    /* Formular via AJAX (verhindert Weiterleitung) */
 
     const nannyForm = document.getElementById('nanny-form');
     const submitBtn = document.getElementById('submit-btn');
     const successBox = document.getElementById('form-success');
     const errorBox = document.getElementById('form-error');
 
-
     nannyForm.addEventListener('submit', function(event) {
-
         event.preventDefault();
 
         successBox.style.display = 'none';
@@ -942,55 +858,32 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Wird gesendet...';
 
-
         const formData = new FormData(nannyForm);
 
-
         fetch(nannyForm.action, {
-
             method: 'POST',
-
             body: formData,
-
             headers: {
                 'Accept': 'application/json'
             }
-
         })
-
         .then(function(response) {
-
             if (response.ok) {
-
                 nannyForm.style.display = 'none';
-
                 successBox.style.display = 'block';
-
                 successBox.scrollIntoView({
                     behavior: 'smooth',
                     block: 'center'
                 });
-
             } else {
-
-                return response.json().then(function() {
-                    throw new Error('Formspree-Fehler');
-                });
-
+                throw new Error('Fehler beim Senden');
             }
-
         })
-
         .catch(function() {
-
             errorBox.style.display = 'block';
-
             submitBtn.disabled = false;
-
-            submitBtn.textContent = 'Anfrage absenden';
-
+            submitBtn.textContent = 'Send';
         });
-
     });
 
 </script>
